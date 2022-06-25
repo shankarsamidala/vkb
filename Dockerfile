@@ -2,11 +2,11 @@ FROM python:3.8-alpine
 
 ENV PYTHONUNBUFFERED 1 
 
-RUN mkdir /7
+RUN mkdir /vkb
 
-WORKDIR /7
+WORKDIR /vkb
 
-COPY . /7/
+COPY . /vkb/
 
 RUN pip install -r requirements.txt
 
