@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
+
+services:
+  batch7:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/7
+    labels:
+      - traefik.http.routers.batch7.rule=Host(`batch7.platfom.live`)
+      - traefik.http.routers.batch7.tls=true
+      - traefik.http.routers.batch7.tls.certresolver=lets-encrypt
+      - traefik.port=8000  
+    networks:
+      - web
+      - internal  
